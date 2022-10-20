@@ -1,6 +1,18 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func Test(t *testing.T) {
+func TestAddCard(t *testing.T) {
+	c1 := Card{SUIT_DIAMOND, 10}
+	c2 := Card{SUIT_CLUB, 3}
+
+	h := Hand{}
+	h.addCard(c1)
+	h.addCard(c2)
+
+	if h.hand_[1] != c2 {
+		t.Fatal("test false")
+	}
 }
