@@ -28,4 +28,8 @@ func TestPickCard(t *testing.T) {
 	if h.pickCard() != c1 {
 		t.Fatal("test fale")
 	}
+
+	if h.hand_[0] != c2 {
+		t.Fatal("test fale")
+	}
 }
