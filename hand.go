@@ -36,3 +36,7 @@ func (h *Hand) shuffle() {
 		}
 	}
 }
+
+func (h Hand) getNumberOfCard() int {
+	return len(h.hand_)
+}
