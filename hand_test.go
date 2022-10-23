@@ -50,5 +50,20 @@ func TestShuffle(t *testing.T) {
 	if len(h.hand_) != 3 {
 		t.Fatal("test fale")
 	}
+}
 
+func TestGetNumberOfCard(t *testing.T) {
+	c1 := Card{SUIT_DIAMOND, 10}
+	c2 := Card{SUIT_CLUB, 3}
+	c3 := Card{SUIT_HEART, 12}
+
+	h := Hand{}
+	h.addCard(c1)
+	h.addCard(c2)
+	h.addCard(c3)
+
+	n := h.getNumberOfCard()
+	if n != len(h.hand_) {
+		t.Fatal("test fale")
+	}
 }
