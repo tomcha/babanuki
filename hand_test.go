@@ -67,3 +67,25 @@ func TestGetNumberOfCard(t *testing.T) {
 		t.Fatal("test fale")
 	}
 }
+
+func TestFindSameNumberCard(t *testing.T) {
+	c1 := Card{SUIT_DIAMOND, 10}
+	c2 := Card{SUIT_CLUB, 3}
+	c3 := Card{SUIT_HEART, 12}
+
+	h := Hand{}
+	h.addCard(c1)
+	h.addCard(c2)
+	h.addCard(c3)
+	sc := h.findSameNumberCard()
+
+	cc1 := Card{SUIT_DIAMOND, 10}
+	cc2 := Card{SUIT_CLUB, 3}
+	cc3 := Card{SUIT_HEART, 10}
+
+	hh := Hand{}
+	hh.addCard(cc1)
+	hh.addCard(cc2)
+	hh.addCard(cc3)
+	ssc := hh.findSameNumberCard()
+}
