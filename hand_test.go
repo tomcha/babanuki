@@ -101,3 +101,20 @@ func TestFindSameNumberCard(t *testing.T) {
 		t.Fatal("test fale")
 	}
 }
+
+func TestHandString(t *testing.T) {
+	c1 := Card{SUIT_SPADE, 1}
+	c2 := Card{SUIT_CLUB, 3}
+	c3 := Card{SUIT_HEART, 12}
+	c4 := Card{JOKER, 0}
+	h := Hand{}
+	h.addCard(c1)
+	h.addCard(c2)
+	h.addCard(c3)
+	h.addCard(c4)
+	str := h.String()
+
+	if str != "SA C3 HQ JK" {
+		t.Fatal("test fale")
+	}
+}

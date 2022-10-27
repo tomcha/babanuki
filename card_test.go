@@ -55,7 +55,7 @@ func TestGetSuit(t *testing.T) {
 	}
 }
 
-func TestString(t *testing.T) {
+func TestCardString(t *testing.T) {
 	var s int = SUIT_SPADE
 	var n int = 1
 	var r string
