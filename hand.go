@@ -40,3 +40,19 @@ func (h *Hand) shuffle() {
 func (h Hand) getNumberOfCard() int {
 	return len(h.hand_)
 }
+
+func (h *Hand) findSameNumberCard() (sameCard []Card) {
+	if len(h.hand_) == 0 {
+	}
+
+	size := len(h.hand_)
+	lc := h.hand_[size-1]
+	for i := 0; i < size-2; i++ {
+		if h.hand_[i].number_ == lc.number_ {
+			sameCard = append(sameCard, h.hand_[i])
+			sameCard = append(sameCard, lc)
+			h.hand_ = h.hand_[:i+(copy(h.hand_[i:], h.hand_[i+1:]))]
+		}
+	}
+	return sameCard
+}
