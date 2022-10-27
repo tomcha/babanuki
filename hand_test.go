@@ -78,6 +78,12 @@ func TestFindSameNumberCard(t *testing.T) {
 	h.addCard(c2)
 	h.addCard(c3)
 	sc := h.findSameNumberCard()
+	if len(sc) != 0 {
+		t.Fatal("test fale")
+	}
+	if len(h.hand_) != 3 {
+		t.Fatal("test fale")
+	}
 
 	cc1 := Card{SUIT_DIAMOND, 10}
 	cc2 := Card{SUIT_CLUB, 3}
@@ -88,4 +94,10 @@ func TestFindSameNumberCard(t *testing.T) {
 	hh.addCard(cc2)
 	hh.addCard(cc3)
 	ssc := hh.findSameNumberCard()
+	if ssc[0] != cc1 || ssc[1] != cc2 {
+		t.Fatal("test fale")
+	}
+	if hh.hand_[0] != cc2 {
+		t.Fatal("test fale")
+	}
 }
