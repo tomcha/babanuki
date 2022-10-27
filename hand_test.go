@@ -94,7 +94,7 @@ func TestFindSameNumberCard(t *testing.T) {
 	hh.addCard(cc2)
 	hh.addCard(cc3)
 	ssc := hh.findSameNumberCard()
-	if ssc[0] != cc1 || ssc[1] != cc2 {
+	if ssc[0] != cc1 || ssc[1] != cc3 {
 		t.Fatal("test fale")
 	}
 	if hh.hand_[0] != cc2 {
