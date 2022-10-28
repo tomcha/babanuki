@@ -2,11 +2,21 @@ package main
 
 import (
 	"math/rand"
+	"strings"
 	"time"
 )
 
 type Hand struct {
 	hand_ []Card
+}
+
+func (h Hand) String() string {
+	var str string
+	for _, c := range h.hand_ {
+		str += c.String() + " "
+	}
+	str = strings.TrimRight(str, " ")
+	return str
 }
 
 func (h *Hand) addCard(c Card) {
