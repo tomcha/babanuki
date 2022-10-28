@@ -25,6 +25,9 @@ func (c Card) getSuit() (int, error) {
 
 func (c Card) String() string {
 	var s string
+	if c.suit_ == JOKER {
+		return "JK"
+	}
 	switch c.suit_ {
 	case SUIT_SPADE:
 		s = "S"
