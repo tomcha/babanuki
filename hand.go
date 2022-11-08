@@ -53,6 +53,7 @@ func (h Hand) getNumberOfCard() int {
 
 func (h *Hand) findSameNumberCard() (sameCard []Card) {
 	if len(h.hand_) == 0 {
+		return sameCard
 	}
 
 	size := len(h.hand_)
