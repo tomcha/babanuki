@@ -15,11 +15,11 @@ type Card struct {
 	number_ int
 }
 
-func (c Card) getNumber() (int, error) {
+func (c Card) GetNumber() (int, error) {
 	return c.number_, nil
 }
 
-func (c Card) getSuit() (int, error) {
+func (c Card) GetSuit() (int, error) {
 	return c.suit_, nil
 }
 

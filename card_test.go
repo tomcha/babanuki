@@ -9,7 +9,7 @@ func TestGetNumber(t *testing.T) {
 	var n int = 3
 	c := Card{s, n}
 
-	result, err := c.getNumber()
+	result, err := c.GetNumber()
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
 	}
@@ -21,7 +21,7 @@ func TestGetNumber(t *testing.T) {
 	n = 10
 	c = Card{s, n}
 
-	result, err = c.getNumber()
+	result, err = c.GetNumber()
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
 	}
@@ -35,7 +35,7 @@ func TestGetSuit(t *testing.T) {
 	var n int = 10
 	c := Card{s, n}
 
-	result, err := c.getSuit()
+	result, err := c.GetSuit()
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
 	}
@@ -46,7 +46,7 @@ func TestGetSuit(t *testing.T) {
 	s = SUIT_CLUB
 	n = 5
 	c = Card{s, n}
-	result, err = c.getSuit()
+	result, err = c.GetSuit()
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
 	}
