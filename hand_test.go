@@ -9,8 +9,8 @@ func TestAddCard(t *testing.T) {
 	c2 := Card{SUIT_CLUB, 3}
 
 	h := Hand{}
-	h.addCard(c1)
-	h.addCard(c2)
+	h.AddCard(c1)
+	h.AddCard(c2)
 
 	if h.hand_[1] != c2 {
 		t.Fatal("test fale")
@@ -23,11 +23,11 @@ func TestPickCard(t *testing.T) {
 	c3 := Card{SUIT_HEART, 12}
 
 	h := Hand{}
-	h.addCard(c1)
-	h.addCard(c2)
-	h.addCard(c3)
+	h.AddCard(c1)
+	h.AddCard(c2)
+	h.AddCard(c3)
 
-	if h.pickCard() != c1 {
+	if h.PickCard() != c1 {
 		t.Fatal("test fale")
 	}
 
@@ -42,11 +42,11 @@ func TestShuffle(t *testing.T) {
 	c3 := Card{SUIT_HEART, 12}
 
 	h := Hand{}
-	h.addCard(c1)
-	h.addCard(c2)
-	h.addCard(c3)
+	h.AddCard(c1)
+	h.AddCard(c2)
+	h.AddCard(c3)
 
-	h.shuffle()
+	h.Shuffle()
 	if len(h.hand_) != 3 {
 		t.Fatal("test fale")
 	}
@@ -58,11 +58,11 @@ func TestGetNumberOfCard(t *testing.T) {
 	c3 := Card{SUIT_HEART, 12}
 
 	h := Hand{}
-	h.addCard(c1)
-	h.addCard(c2)
-	h.addCard(c3)
+	h.AddCard(c1)
+	h.AddCard(c2)
+	h.AddCard(c3)
 
-	n := h.getNumberOfCard()
+	n := h.GetNumberOfCard()
 	if n != len(h.hand_) {
 		t.Fatal("test fale")
 	}
@@ -74,10 +74,10 @@ func TestFindSameNumberCard(t *testing.T) {
 	c3 := Card{SUIT_HEART, 12}
 
 	h := Hand{}
-	h.addCard(c1)
-	h.addCard(c2)
-	h.addCard(c3)
-	sc := h.findSameNumberCard()
+	h.AddCard(c1)
+	h.AddCard(c2)
+	h.AddCard(c3)
+	sc := h.FindSameNumberCard()
 	if len(sc) != 0 {
 		t.Fatal("test fale")
 	}
@@ -90,10 +90,10 @@ func TestFindSameNumberCard(t *testing.T) {
 	cc3 := Card{SUIT_HEART, 10}
 
 	hh := Hand{}
-	hh.addCard(cc1)
-	hh.addCard(cc2)
-	hh.addCard(cc3)
-	ssc := hh.findSameNumberCard()
+	hh.AddCard(cc1)
+	hh.AddCard(cc2)
+	hh.AddCard(cc3)
+	ssc := hh.FindSameNumberCard()
 	if ssc[0] != cc1 || ssc[1] != cc3 {
 		t.Fatal("test fale")
 	}
@@ -108,10 +108,10 @@ func TestHandString(t *testing.T) {
 	c3 := Card{SUIT_HEART, 12}
 	c4 := Card{JOKER, 0}
 	h := Hand{}
-	h.addCard(c1)
-	h.addCard(c2)
-	h.addCard(c3)
-	h.addCard(c4)
+	h.AddCard(c1)
+	h.AddCard(c2)
+	h.AddCard(c3)
+	h.AddCard(c4)
 	str := h.String()
 
 	if str != "SA C3 HQ JK" {

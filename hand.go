@@ -19,18 +19,18 @@ func (h Hand) String() string {
 	return str
 }
 
-func (h *Hand) addCard(c Card) {
+func (h *Hand) AddCard(c Card) {
 	h.hand_ = append(h.hand_, c)
 }
 
-func (h *Hand) pickCard() (c Card) {
+func (h *Hand) PickCard() (c Card) {
 	pickedCard := h.hand_[0]
 	h.hand_ = h.hand_[1:]
 	return pickedCard
 
 }
 
-func (h *Hand) shuffle() {
+func (h *Hand) Shuffle() {
 	size := len(h.hand_)
 	for i := 0; i < size*2; i++ {
 		rand.Seed(time.Now().UnixNano())
@@ -47,11 +47,11 @@ func (h *Hand) shuffle() {
 	}
 }
 
-func (h Hand) getNumberOfCard() int {
+func (h Hand) GetNumberOfCard() int {
 	return len(h.hand_)
 }
 
-func (h *Hand) findSameNumberCard() (sameCard []Card) {
+func (h *Hand) FindSameNumberCard() (sameCard []Card) {
 	if len(h.hand_) == 0 {
 		return sameCard
 	}
