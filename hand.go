@@ -1,6 +1,7 @@
 package main
 
 import (
+	//	"fmt"
 	"math/rand"
 	"strings"
 	"time"
@@ -55,14 +56,17 @@ func (h *Hand) FindSameNumberCard() (sameCard []Card) {
 	if len(h.hand_) == 0 {
 		return sameCard
 	}
-
 	size := len(h.hand_)
 	lc := h.hand_[size-1]
-	for i := 0; i < size-2; i++ {
+	for i := 0; i < size-1; i++ {
 		if h.hand_[i].number_ == lc.number_ {
 			sameCard = append(sameCard, h.hand_[i])
 			sameCard = append(sameCard, lc)
-			h.hand_ = h.hand_[:i+(copy(h.hand_[i:], h.hand_[i+1:]))]
+			pickedHandFront := h.hand_[:i]
+			pickedHandBack := h.hand_[i+1 : len(h.hand_)-1]
+			//			h.hand_ = h.hand_[:i+(copy(h.hand_[i:], h.hand_[i+1:len(h.hand_)-2]))]
+			h.hand_ = append(pickedHandFront, pickedHandBack...)
+			return sameCard
 		}
 	}
 	return sameCard
