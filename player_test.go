@@ -33,16 +33,25 @@ func TestShowHand(t *testing.T) {
 		myHand: h,
 		table_: new(Table),
 	}
-	p.ShowHand()
-	if len(p.myHand.hand_) != len(cards) {
-		t.Fatal("test fale")
-	}
+	sh := p.ShowHand()
 	for i := 0; i < len(p.myHand.hand_); i++ {
-		if p.myHand.hand_[i] != cards[i] {
+		if sh.hand_[i] != cards[i] {
 			return
 		}
 	}
 	t.Fatal("test fale")
+}
+
+func TestShowHand2(t *testing.T) {
+	p := Player{
+		name_:  "taro",
+		myHand: new(Hand),
+		table_: new(Table),
+	}
+	sh := p.ShowHand()
+	if len(sh.hand_) != 0 {
+		t.Fatal("test fale")
+	}
 }
 
 func TestRecieveCard(t *testing.T) {
