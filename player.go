@@ -4,6 +4,7 @@ type Player struct {
 	name_  string
 	myHand *Hand
 	table_ *Table
+	// master_ *Master
 }
 
 func (p Player) String() string {
@@ -17,4 +18,12 @@ func (p *Player) RecieveCard(c Card) {
 		p.table_.DisposeCard(sc[0])
 		p.table_.DisposeCard(sc[1])
 	}
+}
+
+func (p *Player) ShowHand() Hand {
+	if len(p.myHand.hand_) == 0 {
+		//master
+	}
+	p.myHand.Shuffle()
+	return *p.myHand
 }
