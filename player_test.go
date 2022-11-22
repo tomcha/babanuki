@@ -55,7 +55,11 @@ func TestShowHand2(t *testing.T) {
 }
 
 func TestRecieveCard(t *testing.T) {
-	p := Player{name_: "taro", myHand: new(Hand), table_: new(Table)}
+	p := Player{
+		name_:  "taro",
+		myHand: new(Hand),
+		table_: new(Table),
+	}
 	c1 := Card{SUIT_SPADE, 10}
 	c2 := Card{SUIT_DIAMOND, 10}
 	p.RecieveCard(c1)
@@ -73,7 +77,11 @@ func TestDealCard(t *testing.T) {
 }
 
 func TestString(t *testing.T) {
-	p := Player{"taro", new(Hand), new(Table)}
+	p := Player{
+		name_:  "taro",
+		myHand: new(Hand),
+		table_: new(Table),
+	}
 	if p.name_ != "taro" {
 		t.Fatal("test fail")
 	}
