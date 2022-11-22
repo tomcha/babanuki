@@ -4,7 +4,6 @@ type Player struct {
 	name_  string
 	myHand *Hand
 	table_ *Table
-	// master_ *Master
 }
 
 func (p Player) String() string {
