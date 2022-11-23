@@ -8,7 +8,7 @@ type Master struct {
 	players_ []Player
 }
 
-func (m *Master) declareWin(p Player) {
+func (m *Master) DeclareWin(p Player) {
 	fmt.Printf("%s is finnished\n", p.name_)
 	var ti int
 	for i := 0; i < len(m.players_); i++ {
@@ -22,4 +22,8 @@ func (m *Master) declareWin(p Player) {
 	} else {
 		m.players_ = append(m.players_[:ti], m.players_[ti+1:]...)
 	}
+}
+
+func (m *Master) RegisterPlayer(p Player) {
+	m.players_ = append(m.players_, p)
 }
