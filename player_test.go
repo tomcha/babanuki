@@ -29,9 +29,10 @@ func TestShowHand(t *testing.T) {
 	copy(cards2, cards)
 	h.hand_ = cards2
 	p := Player{
-		name_:  "taro",
-		myHand: h,
-		table_: new(Table),
+		name_:   "taro",
+		myHand:  h,
+		table_:  new(Table),
+		master_: new(Master),
 	}
 	sh := p.ShowHand()
 	for i := 0; i < len(p.myHand.hand_); i++ {
@@ -43,22 +44,35 @@ func TestShowHand(t *testing.T) {
 }
 
 func TestShowHand2(t *testing.T) {
-	p := Player{
-		name_:  "taro",
-		myHand: new(Hand),
-		table_: new(Table),
+	m := new(Master)
+	p1 := Player{
+		name_:   "taro",
+		myHand:  new(Hand),
+		table_:  new(Table),
+		master_: m,
 	}
-	sh := p.ShowHand()
-	if len(sh.hand_) != 0 {
-		t.Fatal("test fale")
+	p2 := Player{
+		name_:   "taro",
+		myHand:  new(Hand),
+		table_:  new(Table),
+		master_: m,
+	}
+	m.RegisterPlayer(p1)
+	m.RegisterPlayer(p2)
+
+	p1.myHand.hand_ = append(p1.myHand.hand_, Card{SUIT_CLUB, 1})
+	sh := p1.ShowHand()
+	if len(sh.hand_) != 1 {
+		t.Fatal("fale test")
 	}
 }
 
 func TestRecieveCard(t *testing.T) {
 	p := Player{
-		name_:  "taro",
-		myHand: new(Hand),
-		table_: new(Table),
+		name_:   "taro",
+		myHand:  new(Hand),
+		table_:  new(Table),
+		master_: new(Master),
 	}
 	c1 := Card{SUIT_SPADE, 10}
 	c2 := Card{SUIT_DIAMOND, 10}
@@ -73,14 +87,43 @@ func TestRecieveCard(t *testing.T) {
 }
 
 func TestDealCard(t *testing.T) {
-
+	p := Player{
+		name_:  "taro",
+		myHand: &Hand{},
+		table_: &Table{},
+	}
+	c1 := Card{
+		suit_:   SUIT_CLUB,
+		number_: 10,
+	}
+	p.DealCrad(c1)
+	if len(p.myHand.hand_) != 1 {
+		t.Fatal("test fale")
+	}
+	c2 := Card{
+		suit_:   SUIT_SPADE,
+		number_: 11,
+	}
+	p.DealCrad(c2)
+	if len(p.myHand.hand_) != 2 {
+		t.Fatal("test fale")
+	}
+	c3 := Card{
+		suit_:   SUIT_SPADE,
+		number_: 10,
+	}
+	p.DealCrad(c3)
+	if len(p.myHand.hand_) != 1 {
+		t.Fatal("test fale")
+	}
 }
 
 func TestString(t *testing.T) {
 	p := Player{
-		name_:  "taro",
-		myHand: new(Hand),
-		table_: new(Table),
+		name_:   "taro",
+		myHand:  new(Hand),
+		table_:  new(Table),
+		master_: new(Master),
 	}
 	if p.name_ != "taro" {
 		t.Fatal("test fail")
