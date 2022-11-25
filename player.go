@@ -1,9 +1,10 @@
 package main
 
 type Player struct {
-	name_  string
-	myHand *Hand
-	table_ *Table
+	name_   string
+	myHand  *Hand
+	table_  *Table
+	master_ *Master
 }
 
 func (p Player) String() string {
@@ -20,9 +21,19 @@ func (p *Player) RecieveCard(c Card) {
 }
 
 func (p *Player) ShowHand() Hand {
-	if len(p.myHand.hand_) == 0 {
-		//master
+	if len(p.myHand.hand_) == 1 {
+		p.master_.DeclareWin(*p)
+		return *p.myHand
 	}
 	p.myHand.Shuffle()
 	return *p.myHand
+}
+
+func (p *Player) DealCrad(c Card) {
+	p.myHand.hand_ = append(p.myHand.hand_, c)
+	sameCards := p.myHand.FindSameNumberCard()
+	if len(sameCards) != 0 {
+		p.table_.DisposeCard(sameCards[0])
+		p.table_.DisposeCard(sameCards[1])
+	}
 }
