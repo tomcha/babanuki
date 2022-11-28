@@ -5,7 +5,30 @@ import (
 )
 
 func TestPlay(t *testing.T) {
+	m := new(Master)
+	p1 := Player{
+		name_:   "taro",
+		myHand:  new(Hand),
+		table_:  new(Table),
+		master_: m,
+	}
+	p1.DealCrad(Card{SUIT_CLUB, 1})
+	p1.DealCrad(Card{SUIT_CLUB, 2})
+	p1.DealCrad(Card{SUIT_CLUB, 3})
+	p2 := Player{
+		name_:   "hanako",
+		myHand:  new(Hand),
+		table_:  new(Table),
+		master_: m,
+	}
+	p2.DealCrad(Card{SUIT_HEART, 1})
+	p2.DealCrad(Card{SUIT_HEART, 2})
+	p2.DealCrad(Card{SUIT_HEART, 3})
 
+	m.RegisterPlayer(p1)
+	m.RegisterPlayer(p2)
+
+	p1.Play(&p1.master_.players_[1])
 }
 
 func TestShowHand(t *testing.T) {
