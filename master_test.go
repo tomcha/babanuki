@@ -4,6 +4,15 @@ import (
 	"testing"
 )
 
+func TestPrepareGame(t *testing.T) {
+	m := new(Master)
+	m.PrepareGame()
+}
+
+func TestStartGame(t *testing.T) {
+
+}
+
 func TestDeclareWin(t *testing.T) {
 	m := new(Master)
 	p := Player{
