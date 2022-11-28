@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Player struct {
 	name_   string
 	myHand  *Hand
@@ -35,5 +37,17 @@ func (p *Player) DealCrad(c Card) {
 	if len(sameCards) != 0 {
 		p.table_.DisposeCard(sameCards[0])
 		p.table_.DisposeCard(sameCards[1])
+	}
+}
+
+func (p *Player) Play(nextPalyer *Player) {
+	nextHand := nextPalyer.ShowHand()
+	pickedCard := nextHand.PickCard()
+	fmt.Printf("%s から %s のカードを引きました\n", nextPalyer.String(), pickedCard.String())
+	p.DealCrad(pickedCard)
+	if p.myHand.GetNumberOfCard() == 0 {
+		p.master_.DeclareWin(*p)
+	} else {
+		fmt.Printf("%s : 残りの手札は %s です", p.String(), p.myHand.hand_)
 	}
 }
