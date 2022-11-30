@@ -8,6 +8,16 @@ type Master struct {
 	players_ []Player
 }
 
+func (m *Master) PrepareGame(cards *Hand) {
+	fmt.Println("カードを配ります")
+	cards.Shuffle()
+	numOfCards := cards.GetNumberOfCard()
+	numOfPlayers := len(m.players_)
+	for i := 0; i < numOfCards; i++ {
+		m.players_[i%numOfPlayers].DealCrad(cards.PickCard())
+	}
+}
+
 func (m *Master) DeclareWin(p Player) {
 	fmt.Printf("%s is finnished\n", p.name_)
 	var ti int
