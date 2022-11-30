@@ -33,8 +33,8 @@ func (h *Hand) PickCard() (c Card) {
 
 func (h *Hand) Shuffle() {
 	size := len(h.hand_)
+	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < size*2; i++ {
-		rand.Seed(time.Now().UnixNano())
 		pos := rand.Intn(size)
 		if pos == 0 {
 			c := h.hand_[0]
