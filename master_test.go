@@ -89,8 +89,8 @@ func TestPrepareGame(t *testing.T) {
 	m.PrepareGame(h)
 
 	fmt.Println("p1: ", p1.myHand.hand_)
-	fmt.Println("p2: ",p2.myHand.hand_)
-	fmt.Println("p3: ",p3.myHand.hand_)
+	fmt.Println("p2: ", p2.myHand.hand_)
+	fmt.Println("p3: ", p3.myHand.hand_)
 }
 
 func TestStartGame(t *testing.T) {
