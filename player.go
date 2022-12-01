@@ -22,13 +22,13 @@ func (p *Player) RecieveCard(c Card) {
 	}
 }
 
-func (p *Player) ShowHand() Hand {
+func (p *Player) ShowHand() *Hand {
 	if len(p.myHand.hand_) == 1 {
 		p.master_.DeclareWin(*p)
-		return *p.myHand
+		return p.myHand
 	}
 	p.myHand.Shuffle()
-	return *p.myHand
+	return p.myHand
 }
 
 func (p *Player) DealCrad(c Card) {
@@ -48,6 +48,6 @@ func (p *Player) Play(nextPalyer *Player) {
 	if p.myHand.GetNumberOfCard() == 0 {
 		p.master_.DeclareWin(*p)
 	} else {
-		fmt.Printf("%s : 残りの手札は %s です", p.String(), p.myHand.hand_)
+		fmt.Printf("%s : 残りの手札は %s です\n", p.String(), p.myHand.hand_)
 	}
 }
