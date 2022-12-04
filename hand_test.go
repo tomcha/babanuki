@@ -114,7 +114,7 @@ func TestHandString(t *testing.T) {
 	h.AddCard(c4)
 	str := h.String()
 
-	if str != "SA C3 HQ JK" {
+	if str != "SA C3 HQ JO" {
 		t.Fatal("test fale")
 	}
 }
